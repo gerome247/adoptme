@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 
 import Carousel from './Carousel';
+import ErrorBoundary from './ErrorBoundary';
 
 const Details = ({}) => {
   let params = useParams();
@@ -47,4 +48,13 @@ const Details = ({}) => {
     </div>
   );
 };
-export default withRouter(Details);
+
+const DetailsWithRouter = withRouter(Details);
+
+export default function DetailsWithErrorBoundary() {
+  return (
+    <ErrorBoundary>
+      <DetailsWithRouter />
+    </ErrorBoundary>
+  );
+}
