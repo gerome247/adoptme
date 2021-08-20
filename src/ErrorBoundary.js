@@ -1,6 +1,8 @@
 import { Link, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 
+import ThemeContext from './ThemeContext';
+
 class ErrorBoundary extends Component {
   state = { hasError: false, redirect: false };
   static getDerivedStateFromError(e) {
@@ -24,6 +26,9 @@ class ErrorBoundary extends Component {
         <h2>
           This listing has an error. <Link to="/">Click here </Link> to go back to the home page or wait for five
           seconds.
+          <ThemeContext.Consumer>
+            {([theme]) => <button style={{ backgroundColor: theme }}> test </button>}
+          </ThemeContext.Consumer>
         </h2>
       );
     }
